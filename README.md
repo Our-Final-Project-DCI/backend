@@ -43,13 +43,22 @@
 
 - **User**: Manged User-Daten
 - **Foto** : Manged User-foto
-- **Comment**: Manged User-Answers
+- **Comment**: Manged
 
-![Model-Relations](images/Model-Relation.png)
+![models](https://user-images.githubusercontent.com/81626271/188463228-d8eb95e4-fa17-4aa3-9708-2036a547af82.png)
+ User-Answers
+
+
+
+
 
 ## Endpunkte:
 
-### POST /user/register
+
+USER / PHOTOS / COMMENTS
+
+
+### POST /user/signUp
 
 erstellt einen neuen User und loggt ihn ein
 
@@ -66,7 +75,7 @@ Response:
 
 ```javaScript
 {
-  id:"addedddeww"
+  id:"userAddedddeww"
   email:"tester@test.com"
 }
 ```
@@ -90,7 +99,7 @@ Response:
 {
   id:"addedddeww"
   email:"tester@test.com",
-  name:"Testrt Test",
+  username:'Test Test'
 }
 ```
 
@@ -102,8 +111,10 @@ Response:
 
 ```javaScript
 {
-  id:"addedddeww"
+  id:"userAddedddeww"
   email:"tester@test.com",
+  uploadetPhotos:[ObjectID,...,...],
+  likedPhotos:[]
 }
 ```
 
@@ -114,9 +125,10 @@ Body:
 
 ```javaScript
 {
-  title:"?",
-  description:"....",
-  category:''
+  user:"ObjectId",
+  imgFile: 'blablablaaaa'
+  category:'Nature',
+  comments:[ObjectId,...,...]
 }
 ```
 
@@ -124,71 +136,54 @@ Response:
 
 ```javaScript
 {
-  id:"qqqqsfhkksfr"
-  title:"?",
-  description:"....",
-  user:"addedddeww",
-  likes:[],
-  pictures:[]
-  category:''
+  id:"photos1Qqqqsfhkksfr"
+  user:"userAddedddeww",
+  category:'Nature',
+  photoFile: 'blablablaaaa'
 }
 ```
 
-### GET /questions
+### GET / photos
 
-liefert eine Liste aller Questions zurück
 
-shape:
+liefert eine Liste aller meine Upgeloadet PHOTOS zurück
+
+body:
 
 ```JavaScript
 [
 {
-  id:"qqqqsfhkksfr"
-  title: 'was kann XZ tun',
-  description: ".....",
-  user:{
-    email:'tester@test.com',
-    name:'Tester Test'
-  }
-  answers:[
-    {
-      description:"...."
-    }
-  ]
-}
-]
+  id:"photos1Qqqqsfhkksfr"
+  user: ObjectID
+  comments:[ObjectIDs]
 ```
 
-### GET /questions/[:id]
+### GET /photos/[:id]
 
-liefert uns eine einzelne Question zurück
+liefert uns eine einzelne Photo zurück
 
 Response:
 
 ```JavaScript
 
 {
-  id:"qqqqsfhkksfr"
-  title: 'was kann XZ tun?',
-  description: ".....",
-  user:{
-    email:'tester@test.com',
-    name:'Tester Test'
-  }
+  id:"photos1Qqqqsfhkksfr"
+  user: ObjectID
 }
 
 ```
 
-### POST /answers
+### POST /comments
 
-erstellt eine Antwort für eine Question
+erstellt eine COMMENT für ein PHOTO
 
 Body:
 
 ```javaScript
 {
-  question:"qqqqsfhkksfr",
-  description:"....",
+  user:"ObjectID",
+  photoFile:ObjectID,
+  content:"Das ist eine schönes Bild....."
 }
 ```
 
@@ -196,10 +191,10 @@ Response:
 
 ```javaScript
 {
-  id:"annqqwwwseww"
-  description:"....",
-  user:"addedddeww",
-  question:"qqqqsfhkksfr"
+  id:"Comment1233324nqqwwwseww"
+  content:"Das ist eine schönes Bild.........",
+  user:"ObjectID",
+  photoFile:"ObjectID"
 }
 ```
 
