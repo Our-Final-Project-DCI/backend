@@ -1,4 +1,4 @@
-# backend ++
+# backend 
 # Up & Download Images APP
 
 ## Features
@@ -13,20 +13,20 @@
 
 - **FOTOS**: Es können Fotos in der User-Account-Seite gespeichert werden. Diese sind die Fotos , die er schön upgeloadet hat in eine Liste (unter my Pictures ) und fotos die ihm vom anderen gefallen haben in eine Liste (unter Likes) 
 - alle werden auf dem Server mit mongoDB gespeichert.
-  Der User kann in jedes Foto mehr details über diese Foto (username , user ProfileImage ,Likes Icon, add upload Icons )
-  Der User kann reactiv mit der Fotos sein , Aber kann  Like, Add , Button oder upload  funktionalität nur funktioneret  wenn User einen Account hat bzw. hat sich erfolgreich angemeldet.
+  Der User kann in jedes Foto mehr details über diese Foto ansehen (username , user ProfileImage ,Likes Icon,  download Icons , comments)
+  Der User kann reactiv mit der Fotos sein , Aber kann  Like, Comment, Button oder Download funktionalität nur funktioniert  wenn User einen Account hat bzw. hat sich erfolgreich angemeldet.
 
 
 
 - **Foto hochladen**: Der User kann über ein Formdata Titel und Description (und Kategorie , location) angeben. Diese Foto wird in der Datenbank gespeichert werden und in der My Picture Collection  und in der Home-Seite mit alle anderen Fotos gezeigt werden.
-
-- **Foto herrunterladen / zur Likes Collection hinfügen**: Der User kann fotos vom anderen UsersCtegorien Fotos herrunterladen . Diese Question wird in der Datenbank gespeichert
-
+- **Foto herrunterladen**: Der User kann fotos vom anderen UsersCtegorien Fotos herrunterladen . Diese Question wird in der Datenbank gespeichert
+- ** Likes Collection erstellen**: Gelikte Fotos zur Likes Collection in meinem Accout hinzugefügt werden.
 
 ### OPTIONAL-Features - |
 
-- **Account-Update**: Der User kann seine persönlichen Daten ändern (Fullname & Username & ProfileImage & tel und about me ).
-- **Kategorie-Filter**: Es gibt eine feste Liste von Kategorien. Der User kann diese Kategorien als Filter für die Fotos-Categories verwenden. Die Kategorie wird bei dem Hochladen einem Foto defeniert
+- **Account-Update**: Der User kann seine persönlichen Daten ändern (Fullname & Username & ProfileImage &  About me ).
+- **Kategorie-Filter**: Es gibt eine feste Liste von Kategorien. Der User kann diese Kategorien als Filter für die Fotos-Categories verwenden. Die Kategorie wird bei dem Hochladen einem Foto defeniert. 
+
 
 ### OPTIONAL-Features - ||
 
@@ -37,13 +37,13 @@
 
 - **User-Likes-List**: Der User kann im Account-Bereich auch eine Liste seiner likes Pictures sehen. (unter collections : Likes)
 
-- **Such-Funktion**:
+- **Such-Funktion**: Das Foto kann nach Titel oder Category gefunden werden.
 
 ## Models
 
 - **User**: Manged User-Daten
-- **Fotos** : Manged User-foos
-- **Answer**: Manged User-Answers
+- **Foto** : Manged User-foto
+- **Comment**: Manged User-Answers
 
 ![Model-Relations](images/Model-Relation.png)
 
