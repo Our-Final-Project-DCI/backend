@@ -24,27 +24,23 @@
 
 
 - **FOTO**
-  Der User kann sich mehr details über jedes Foto informieren .
+  Der User kann sich mehr details über jedes Foto informieren wen man darauf klickt.
   auf Bilder steht (username , user ProfileImage ) und Like , download , comments funktionalität 
   , die Der User erlaubt mit Foto reactiv zu sein : Like, Comment, Download  Aber all das nur funktioniert wenn User einen Account bzw. er  erfolgreich eingelogt ist.
 
 
 ### OPTIONAL-Features - |
 
-
-- **Likes Collection erstellen**: Gelikte Fotos werden zur Likes Collection in My im Account-Bereich hinzugefügt .
-
 - **Account-Update**: Der User kann seine persönlichen Daten ändern und erwiteren (Fullname & Username & ProfileImage &  About me ).
-
 
 
 ### OPTIONAL-Features - ||
 
 - **Avatar**: Der User kann beim Erstellen des Accounts einen ProfileImage hochladen. dieser wird auf allen Fotos bei Home-Seite und My Account-Seite vor dem username angezeigt werden (aber profileImage nicht required)
 
-- **User-Photos-List**: Der User kann im Account-Bereich eine Liste seiner eigenen Pictures sehen. ( collection : My Photos)
+- **User-Photos-List**: Der User kann im Account-Bereich eine Liste seiner eigenen hochgeladene Pictures sehen. ( collection : My Photos)
 
-- **User-Likes-List**: Der User kann im Account-Bereich auch eine Liste seiner likes Pictures sehen. (unter collections : Likes)
+- **User-Likes-List**: Der User kann im Account-Bereich auch eine Liste seiner gelikes Pictures sehen. ( collection : Likes)
 
 - **Such-Funktion**: Das Foto könnte nach Titel oder Category gesucht und gefunden werden.
 
@@ -167,6 +163,7 @@ body:
   id:"photos1Qqqqsfhkksfr"
   user: "ObjectID"
   comments:[ObjectIDs]
+  },]
 ```
 
 ### GET /photos/[:id]
