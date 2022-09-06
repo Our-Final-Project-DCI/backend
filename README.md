@@ -1,5 +1,5 @@
 # backend 
-# Up & Download Images APP
+# Up & Download PHOTOS App
 
 ## Features
 
@@ -11,33 +11,42 @@
 
 - **Logout**: Der User kann sich aus seinem Account ausloggen.
 
-- **FOTOS**: Es können Fotos in der User-Account-Seite gespeichert werden. Diese sind die Fotos , die er schön upgeloadet hat in eine Liste (unter my Pictures ) und fotos die ihm vom anderen gefallen haben in eine Liste (unter Likes) 
-- alle werden auf dem Server mit mongoDB gespeichert.
-  Der User kann in jedes Foto mehr details über diese Foto ansehen (username , user ProfileImage ,Likes Icon,  download Icons , comments)
-  Der User kann reactiv mit der Fotos sein , Aber kann  Like, Comment, Button oder Download funktionalität nur funktioniert  wenn User einen Account hat bzw. hat sich erfolgreich angemeldet.
+- **Foto hochladen**: Der User darf Photo hochladen wenn User einen Account hat und er ist eingeloggt .
+über ein Formdata werden Fotos hochgeladen . Dafür sind photo-File und category Felder  (required) um Bilder hochzuladen..
+  Titel , Description und location sind nicht required beim Photo-Upload .Dieses Foto wird in der Datenbank gespeichert werden.
+
+ alle hochgeladene Photos werden in der My Photos Collection in Account- Seite und und auch in der Gallery-Seite unter einer Category und kann auch im Home-seite mit random bilder von anderen Users gezeigt werden.
 
 
+- **Foto herrunterladen**: Der User kann fotos vom anderen Fotos herrunterladen .
 
-- **Foto hochladen**: Der User kann über ein Formdata Titel und Description (und Kategorie , location) angeben. Diese Foto wird in der Datenbank gespeichert werden und in der My Picture Collection  und in der Home-Seite mit alle anderen Fotos gezeigt werden.
-- **Foto herrunterladen**: Der User kann fotos vom anderen UsersCtegorien Fotos herrunterladen . Diese Question wird in der Datenbank gespeichert
-- ** Likes Collection erstellen**: Gelikte Fotos zur Likes Collection in meinem Accout hinzugefügt werden.
+- **Foto kommentieren**: Der User kann seine Kommentare an fotos mit anderen mitteilen (comment schreiben) .
+
+
+- **FOTO**
+  Der User kann sich mehr details über jedes Foto informieren .
+  auf Bilder steht (username , user ProfileImage ) und Like , download , comments funktionalität 
+  , die Der User erlaubt mit Foto reactiv zu sein : Like, Comment, Download  Aber all das nur funktioniert wenn User einen Account bzw. er  erfolgreich eingelogt ist.
+
 
 ### OPTIONAL-Features - |
 
-- **Account-Update**: Der User kann seine persönlichen Daten ändern (Fullname & Username & ProfileImage &  About me ).
-- **Kategorie-Filter**: Es gibt eine feste Liste von Kategorien. Der User kann diese Kategorien als Filter für die Fotos-Categories verwenden. Die Kategorie wird bei dem Hochladen einem Foto defeniert. 
+
+- **Likes Collection erstellen**: Gelikte Fotos werden zur Likes Collection in My im Account-Bereich hinzugefügt .
+
+- **Account-Update**: Der User kann seine persönlichen Daten ändern und erwiteren (Fullname & Username & ProfileImage &  About me ).
+
 
 
 ### OPTIONAL-Features - ||
 
-- **ProfileImage**: Der User kann beim Erstellen des Accounts einen ProfileImage hochladen. dieser wird auf allen Fotos bei Home-Seite und My Account -Seite vor dem username angezeigt werden (profileImage nicht required)
+- **Avatar**: Der User kann beim Erstellen des Accounts einen ProfileImage hochladen. dieser wird auf allen Fotos bei Home-Seite und My Account-Seite vor dem username angezeigt werden (aber profileImage nicht required)
 
-- **User-Picturs-List**: Der User kann im Account-Bereich eine Liste seiner eigenen Pictures sehen. (unter collections : Picture)
-
+- **User-Photos-List**: Der User kann im Account-Bereich eine Liste seiner eigenen Pictures sehen. ( collection : My Photos)
 
 - **User-Likes-List**: Der User kann im Account-Bereich auch eine Liste seiner likes Pictures sehen. (unter collections : Likes)
 
-- **Such-Funktion**: Das Foto kann nach Titel oder Category gefunden werden.
+- **Such-Funktion**: Das Foto könnte nach Titel oder Category gesucht und gefunden werden.
 
 ## Models
 
@@ -45,10 +54,8 @@
 - **Foto** : Manged User-foto
 - **Comment**: Manged
 
-![models](https://user-images.githubusercontent.com/81626271/188463228-d8eb95e4-fa17-4aa3-9708-2036a547af82.png)
- User-Answers
 
-
+![dbMODELS](https://user-images.githubusercontent.com/81626271/188525872-5c87ec0a-fa15-4abd-b018-841647048701.png)
 
 
 
@@ -62,12 +69,14 @@ USER / PHOTOS / COMMENTS
 
 erstellt einen neuen User und loggt ihn ein
 
-Body:
+Shape:
 
 ```javaScript
 {
-  email:"tester@test.com",
+  email:"hello@world.com",
   password:"123456789",
+  username:"Hey Hallo",
+  uploadetPhotos:''
 }
 ```
 
@@ -75,8 +84,10 @@ Response:
 
 ```javaScript
 {
-  id:"userAddedddeww"
-  email:"tester@test.com"
+  _id:"userId234570UU88",
+  email:"tester@test.com",
+  username:"Hey Hallo",
+    uploadetPhotos:''
 }
 ```
 
@@ -88,7 +99,7 @@ Body:
 
 ```javaScript
 {
-  email:"tester@test.com",
+  email:"hello@world.com",
   password:"123456789",
 }
 ```
@@ -97,8 +108,8 @@ Response:
 
 ```javaScript
 {
-  id:"addedddeww"
-  email:"tester@test.com",
+  _id:"userId234570UU88",
+  email:"hello@world.com",
   username:'Test Test'
 }
 ```
@@ -111,7 +122,7 @@ Response:
 
 ```javaScript
 {
-  id:"userAddedddeww"
+  _id:"userId234570UU88"
   email:"tester@test.com",
   uploadetPhotos:[ObjectID,...,...],
   likedPhotos:[]
@@ -119,16 +130,16 @@ Response:
 ```
 
 ### POST /photos
-
+ladet eine neue PHOTO hoch
 
 Body:
 
 ```javaScript
 {
-  user:"ObjectId",
-  imgFile: 'blablablaaaa'
+  user:"ObjectID",
   category:'Nature',
-  comments:[ObjectId,...,...]
+  photoFile: 'blabla/blaaa'
+  comments:[ObjectIds,...,...]
 }
 ```
 
@@ -136,10 +147,10 @@ Response:
 
 ```javaScript
 {
-  id:"photos1Qqqqsfhkksfr"
-  user:"userAddedddeww",
+  _id:"photoId234570UU88"
+  user:"userId234570UU88",
   category:'Nature',
-  photoFile: 'blablablaaaa'
+  photoFile: 'blabla/blaaa'
 }
 ```
 
@@ -154,7 +165,7 @@ body:
 [
 {
   id:"photos1Qqqqsfhkksfr"
-  user: ObjectID
+  user: "ObjectID"
   comments:[ObjectIDs]
 ```
 
@@ -167,7 +178,7 @@ Response:
 ```JavaScript
 
 {
-  id:"photos1Qqqqsfhkksfr"
+  _id:"photos1Qqqqsfhkksfr"
   user: ObjectID
 }
 
@@ -181,9 +192,9 @@ Body:
 
 ```javaScript
 {
-  user:"ObjectID",
-  photoFile:ObjectID,
-  content:"Das ist eine schönes Bild....."
+  user: "ObjectID",
+  photoFile: ObjectID,
+  content:"Das ist ein schönes Bild....."
 }
 ```
 
