@@ -55,7 +55,7 @@
 
 
 
-## Endpunkte:
+## endpunkte:
 
 
 USER / PHOTOS / COMMENTS
@@ -72,7 +72,7 @@ Shape:
   email:"hello@world.com",
   password:"123456789",
   username:"Hey Hallo",
-  uploadetPhotos:''
+  fullname:''
 }
 ```
 
@@ -83,7 +83,7 @@ Response:
   _id:"userId234570UU88",
   email:"tester@test.com",
   username:"Hey Hallo",
-    uploadetPhotos:''
+  
 }
 ```
 
@@ -132,7 +132,6 @@ Body:
 
 ```javaScript
 {
-  user:"ObjectID",
   category:'Nature',
   photoFile: 'blabla/blaaa'
   comments:[ObjectIds,...,...]
@@ -189,7 +188,7 @@ Body:
 
 ```javaScript
 {
-  user: "ObjectID",
+  
   photoFile: ObjectID,
   content:"Das ist ein schönes Bild....."
 }
@@ -205,6 +204,7 @@ Response:
   photoFile:"ObjectID"
 }
 ```
+### Get /comment 
 
 ### POST /user/logout
 
