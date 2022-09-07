@@ -1,4 +1,5 @@
-# backend 
+# backend
+
 # Up & Download PHOTOS App
 
 ## Features
@@ -12,27 +13,23 @@
 - **Logout**: Der User kann sich aus seinem Account ausloggen.
 
 - **Foto hochladen**: Der User darf Photo hochladen wenn User einen Account hat und er ist eingeloggt .
-über ein Formdata werden Fotos hochgeladen . Dafür sind photo-File und category Felder  (required) um Bilder hochzuladen..
+  über ein Formdata werden Fotos hochgeladen . Dafür sind photo-File und category Felder (required) um Bilder hochzuladen..
   Titel , Description und location sind nicht required beim Photo-Upload .Dieses Foto wird in der Datenbank gespeichert werden.
 
- alle hochgeladene Photos werden in der My Photos Collection in Account- Seite und und auch in der Gallery-Seite unter einer Category und kann auch im Home-seite mit random bilder von anderen Users gezeigt werden.
-
+alle hochgeladene Photos werden in der My Photos Collection in Account- Seite und und auch in der Gallery-Seite unter einer Category und kann auch im Home-seite mit random bilder von anderen Users gezeigt werden.
 
 - **Foto herrunterladen**: Der User kann fotos vom anderen Fotos herrunterladen .
 
 - **Foto kommentieren**: Der User kann seine Kommentare an fotos mit anderen mitteilen (comment schreiben) .
 
-
 - **FOTO**
   Der User kann sich mehr details über jedes Foto informieren wen man darauf klickt.
-  auf Bilder steht (username , user ProfileImage ) und Like , download , comments funktionalität 
-  , die Der User erlaubt mit Foto reactiv zu sein : Like, Comment, Download  Aber all das nur funktioniert wenn User einen Account bzw. er  erfolgreich eingelogt ist.
-
+  auf Bilder steht (username , user ProfileImage ) und Like , download , comments funktionalität
+  , die Der User erlaubt mit Foto reactiv zu sein : Like, Comment, Download Aber all das nur funktioniert wenn User einen Account bzw. er erfolgreich eingelogt ist.
 
 ### OPTIONAL-Features - |
 
-- **Account-Update**: Der User kann seine persönlichen Daten ändern und erwiteren (Fullname & Username & ProfileImage &  About me ).
-
+- **Account-Update**: Der User kann seine persönlichen Daten ändern und erwiteren (Fullname & Username & ProfileImage & About me ).
 
 ### OPTIONAL-Features - ||
 
@@ -50,22 +47,17 @@
 - **Foto** : Manged User-foto
 - **Comment**: Manged
 
-
 ![dbMODELS](https://user-images.githubusercontent.com/81626271/188525872-5c87ec0a-fa15-4abd-b018-841647048701.png)
-
-
 
 ## endpunkte:
 
-
 USER / PHOTOS / COMMENTS
-
 
 ### POST /user/signUp
 
 erstellt einen neuen User und loggt ihn ein
 
-Shape:
+Body:
 
 ```javaScript
 {
@@ -83,7 +75,6 @@ Response:
   _id:"userId234570UU88",
   email:"tester@test.com",
   username:"Hey Hallo",
-  
 }
 ```
 
@@ -126,6 +117,7 @@ Response:
 ```
 
 ### POST /photos
+
 ladet eine neue PHOTO hoch
 
 Body:
@@ -133,7 +125,7 @@ Body:
 ```javaScript
 {
   category:'Nature',
-  photoFile: 'blabla/blaaa'
+  photoFile: 'blabla/blaaa',
   comments:[ObjectIds,...,...]
 }
 ```
@@ -151,7 +143,6 @@ Response:
 
 ### GET / photos
 
-
 liefert eine Liste aller meine Upgeloadet PHOTOS zurück
 
 body:
@@ -159,7 +150,7 @@ body:
 ```JavaScript
 [
 {
-  id:"photos1Qqqqsfhkksfr"
+  _id:"photos1Qqqqsfhkksfr"
   user: "ObjectID"
   comments:[ObjectIDs]
   },]
@@ -188,7 +179,6 @@ Body:
 
 ```javaScript
 {
-  
   photoFile: ObjectID,
   content:"Das ist ein schönes Bild....."
 }
@@ -204,7 +194,8 @@ Response:
   photoFile:"ObjectID"
 }
 ```
-### Get /comment 
+
+### Get /comments??
 
 ### POST /user/logout
 
