@@ -150,7 +150,7 @@ Body:
 {
   category:'Nature',
   photoFile: 'blabla/blaaa',
-  comments:[ObjectIds,...,...]
+
 }
 ```
 
