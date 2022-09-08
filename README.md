@@ -115,6 +115,30 @@ Response:
 }
 ```
 
+PATCH /user
+
+ermöglicht es user-daten zu updaten. Body wird als FormData definiert (avatar hochladen)
+
+Body:
+
+{
+  name: "Hey Hello",
+  avatar: "my-avatar.jpg",
+  username:"hallo WORLD"
+}
+
+
+Response:
+
+{
+  _id: "userId234570UU88",
+  email: "tester@test.com",
+  name: "Hey Hello",
+  avatar: "data:base64"
+}
+
+
+
 ### POST /photos
 
 ladet eine neue PHOTO hoch
