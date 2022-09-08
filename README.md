@@ -115,20 +115,21 @@ Response:
 }
 ```
 
-PATCH /user
+### PATCH /user
 
 ermöglicht es user-daten zu updaten. Body wird als FormData definiert (avatar hochladen)
 
 Body:
-
+```javaScript
 {
   name: "Hey Hello",
   avatar: "my-avatar.jpg",
   username:"hallo WORLD"
 }
-
+```
 
 Response:
+```javaScript
 
 {
   _id: "userId234570UU88",
@@ -136,7 +137,7 @@ Response:
   name: "Hey Hello",
   avatar: "data:base64"
 }
-
+```
 
 
 ### POST /photos
