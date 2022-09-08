@@ -46,8 +46,7 @@ alle hochgeladene Photos werden in der My Photos Collection in Account- Seite un
 - **User**: Manged User-Daten
 - **Foto** : Manged User-foto
 - **Comment**: Manged
-
-![dbMODELS](https://user-images.githubusercontent.com/81626271/188525872-5c87ec0a-fa15-4abd-b018-841647048701.png)
+![PHTOTORAM-Model-mockup](https://user-images.githubusercontent.com/81626271/189150270-81efa674-11d4-4212-a21f-de21ea172c36.png)
 
 ## endpunkte:
 
