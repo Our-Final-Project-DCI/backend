@@ -8,10 +8,15 @@ const userSchema = mongoose.Schema({
   token: String,
   //likedPhotos: [],
   avatar: String,
-  // socialMedia: {
-  //   title: String,
-  //   link: String,
-  // },
+  gender: String,
+  city: String,
+  land: String,
+  // socialMedias: [
+  //   {
+  //     platform: String,
+  //     link: String,
+  //   },
+  // ],
 });
 
-module.exports = mongoose.model('User', userSchema, 'users') 
+module.exports = mongoose.model("User", userSchema, "users");
