@@ -1,4 +1,6 @@
 const { body } = require("express-validator");
+// error validator importieren:
+const errorsValidator = require("../middlewares/errorsValidator");
 
 exports.signup = [
   body("username")
@@ -10,6 +12,7 @@ exports.signup = [
     .isLength({ min: 8 })
 
     .withMessage("your Password is not strong , improve your password"),
+  errorsValidator,
 ];
 
 exports.login = [
@@ -17,6 +20,7 @@ exports.login = [
   body("password")
     .isStrongPassword()
     .withMessage("your Password is not strong , improve your password"),
+  errorsValidator,
 ];
 
 //exports.update = [];
