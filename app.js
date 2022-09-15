@@ -1,6 +1,10 @@
 require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
+
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const userRouter = require("./src/routes/userRoutes");
 const photosRouter = require("./src/routes/photosRoutes");
@@ -15,6 +19,18 @@ const app = express();
 
 // bodyParser Middleware
 app.use(express.json());
+// cookieParser Middleware
+app.use(cookieParser());
+
+// cors Config:
+const corsConfig = {
+  origin: "http://localhost:3007",
+  credentials: true,
+};
+
+// cors Middleware:
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 
 // ROUTERS
 app.use("user", userRouter);
