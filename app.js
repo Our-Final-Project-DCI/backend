@@ -21,7 +21,13 @@ app.use("user", userRouter);
 app.use("photos", photosRouter);
 app.use("comments", commentsRouter);
 
-// NotFound Handler (Route Not Found 404)/middleware
+// NotFound Handler (Route Not Found 404)/middleware:
+
+app.use((req, res, next) => {
+  const error = new Error("Route Not Found!!");
+  error.status = 404;
+  next(error);
+});
 
 // Error Handler/middleware
 
