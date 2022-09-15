@@ -37,6 +37,12 @@ app.use("user", userRouter);
 app.use("photos", photosRouter);
 app.use("comments", commentsRouter);
 
+// drop-database:
+app.post("/drop-database", async (req, res) => {
+  await mongoose.connection.db.dropDatabase();
+  res.status(200).send("OK! database dropt ");
+});
+
 // NotFound Handler (Route Not Found 404)/middleware:
 app.use((req, res, next) => {
   const error = new Error("Route Not Found!!");
