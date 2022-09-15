@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 
 const photoSchema = mongoose.Schema({
   user: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: true },
-  category: { type: String, enum: ["nature", "arts", "Autos"], required: true },
+  category: {
+    type: String,
+    enum: ["nature", "arts", "cars", "fashion", "foods", "others", "animals"],
+    required: true,
+  },
   title: String,
   location: String,
   photoFile: { type: String, required: true },
