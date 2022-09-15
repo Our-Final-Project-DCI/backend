@@ -24,12 +24,14 @@ exports.signup = [
 exports.login = [
   body("email")
     .trim()
-    .normalizeEmail()
     .isEmail()
+    .notEmpty()
+    .normalizeEmail()
     .withMessage("Email is not valid"),
   body("password")
     .isStrongPassword()
-    .withMessage("your Password is not strong , improve your password"),
+    .isLength({ min: 8 })
+    .withMessage("your Password is not strong und must be +8 characters long"),
   errorsValidator,
 ];
 
