@@ -33,9 +33,9 @@ app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
 
 // ROUTERS
-app.use("user", userRouter);
-app.use("photos", photosRouter);
-app.use("comments", commentsRouter);
+app.use("/user", userRouter);
+app.use("/photos", photosRouter);
+app.use("/comments", commentsRouter);
 
 // drop-database:
 app.post("/drop-database", async (req, res) => {
