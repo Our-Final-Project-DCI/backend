@@ -15,7 +15,7 @@ const app = express.Router();
 app.post("/signup", validator.signup, controller.signup);
 
 // 3)  /user/login
-//app.post("/login", validator.login, controller.login);
+app.post("/login", validator.login, controller.login);
 
 // 4)  /user/logout
 //app.post("/logout", controller.logout);
