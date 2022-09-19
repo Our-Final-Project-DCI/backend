@@ -14,7 +14,7 @@ exports.signup = async (req, res, next) => {
   await newUser.save();
 
   res.cookie("user-token", newUser.token, {
-    maxAge: 100000,
+    maxAge: 900000,
     sameSite: "strict",
     httpOnly: true,
   });
