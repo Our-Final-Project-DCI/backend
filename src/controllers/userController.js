@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
   userFound.token = crypto.randomBytes(64).toString("hex");
 
   res.cookie("user-token", userFound.token, {
-    maxAge: 100000,
+    maxAge: 900000,
     sameSite: "strict",
     httpOnly: true,
   });
