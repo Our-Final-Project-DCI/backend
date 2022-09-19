@@ -2,6 +2,10 @@ const User = require("../models/User");
 
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+// um fils zu lesen
+
+const path = require("path");
+const fs = require("fs/promises");
 
 // 1. signup
 /** @type {import("express").RequestHandler} */
@@ -51,4 +55,47 @@ exports.login = async (req, res, next) => {
   });
 
   res.status(200).send(userFound);
+};
+
+// 2. update:
+/** @type {import("express").RequestHandler} */
+exports.update = async (req, res, next) => {
+  const { fullname, land, city, description, gender } = req.body;
+
+  const user = req.user;
+  if (fullname) {
+    user.fullname = fullname;
+  }
+
+  if (land) {
+    user.land = land;
+  }
+
+  if (city) {
+    user.city = city;
+  }
+
+  if (description) {
+    user.description = description;
+  }
+
+  if (gender) {
+    user.gender = gender;
+  }
+
+  if (req.file) {
+    const filename = path.join(process.cwd(), req.file.path);
+    const buffer = await fs.readFile(filename);
+    const image = `data:${req.file.mimetype};base64,${buffer.toString(
+      "base64"
+    )}`;
+
+    user.avatar = image;
+
+    await fs.unlink(filename);
+  }
+
+  await user.save();
+
+  res.status(200).send(user);
 };

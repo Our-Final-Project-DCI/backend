@@ -11,6 +11,7 @@ const userSchema = mongoose.Schema({
   gender: { type: String, enum: ["male", "female"] },
   city: String,
   land: String,
+  description: String,
   // socialMedias: [
   //   {
   //     platform: String,
