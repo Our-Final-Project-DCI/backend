@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 // cors Config:
 const corsConfig = {
-  origin: "http://localhost:3007",
+  origin: "http://localhost:3000",
   credentials: true,
 };
 
@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, next) => {
   res.status(error.status || 500).send({
-    error: error.messagge,
+    error: error.message,
   });
 });
 
