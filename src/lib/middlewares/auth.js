@@ -5,6 +5,9 @@ const errorsValidator = require("./errorsValidator");
 module.exports = async (req, res, next) => {
   const token = req.cookies["user-token"];
 
+ /*  console.log(req.cookies); */
+  console.log(token);
+
   if (!token) {
     const error = new Error("you need to signup or login first!!");
     error.status = 401;

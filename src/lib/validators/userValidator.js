@@ -30,5 +30,12 @@ exports.update = [
     .notEmpty()
     .isIn(["male", "female"])
     .withMessage("you must select : female or male"),
-
+  body("fullname")
+    .optional()
+    .trim(),
+  body("city").optional().trim(),
+  body("land").optional().trim(),
+  body("description")
+    .optional()
+    .trim(),
 ];
