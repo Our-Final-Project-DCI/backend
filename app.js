@@ -32,8 +32,11 @@ const corsConfig = {
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
 
+app.use(express.static("uploads"));
+
 // ROUTERS
 app.use("/user", userRouter);
+
 app.use("/photos", photosRouter);
 app.use("/comments", commentsRouter);
 
