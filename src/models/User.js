@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
   token: String,
   //likedPhotos: [],
   avatar: String,
-  gender: { type: String, enum: ["male", "female"] },
+  gender: { type: String, enum: ["Male", "Female"] },
   city: String,
   land: String,
   description: String,

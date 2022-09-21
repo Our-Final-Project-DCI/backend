@@ -1,7 +1,7 @@
 const express = require("express");
 const controller = require("../controllers/userController");
 const validator = require("../lib/validators/userValidator");
-require('express-async-errors')
+require("express-async-errors");
 const auth = require("../lib/middlewares/auth");
 const app = express.Router();
 const multer = require("multer");
@@ -18,6 +18,8 @@ app.patch(
   validator.update,
   controller.update
 );
+
+// getCurrentUser
 
 //app.get("/", controller.getCurrentUser);
 
