@@ -21,7 +21,7 @@ app.patch(
 
 // getCurrentUser
 
-//app.get("/", controller.getCurrentUser);
+app.get("/", controller.getCurrentUser);
 
 // 2)  /user/signup
 app.post("/signup", validator.signup, controller.signup);
@@ -30,6 +30,6 @@ app.post("/signup", validator.signup, controller.signup);
 app.post("/login", validator.login, controller.login);
 
 // 4)  /user/logout
-//app.post("/logout", controller.logout);
+app.post("/logout", controller.logout);
 
 module.exports = app;

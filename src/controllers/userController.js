@@ -58,7 +58,7 @@ exports.login = async (req, res, next) => {
   res.status(200).send(userFound);
 };
 
-// 2. update:
+// 3. update:
 /** @type {import("express").RequestHandler} */
 exports.update = async (req, res, next) => {
   const { fullname, land, city, description, gender } = req.body;
@@ -101,5 +101,36 @@ exports.update = async (req, res, next) => {
   res.status(200).send(user);
 };
 
-// 2. update:
+//4. getCurrentUser:
 /** @type {import("express").RequestHandler} */
+exports.getCurrentUser = async (req, res, next) => {
+  const token = req.cookies["user-token"];
+
+  if (!token) {
+    return res.status(200).json(null);
+  }
+
+  const user = await User.findOne().where("token").equals(token);
+
+  return res.status(200).json(user);
+};
+
+//5. logout:
+/** @type {import("express").RequestHandler} */
+exports.logout = async (req, res, next) => {
+  const token = req.cookies["user-token"];
+  const user = await User.findOne().where("token").equals(token);
+
+  if (user) {
+    user.token = "";
+    await user.save();
+  }
+
+  res.cookie("user-token", "", {
+    maxAge: 1,
+    sameSite: "strict",
+    httpOnly: true,
+  });
+
+  res.status(200).send();
+};
