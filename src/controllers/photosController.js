@@ -1,17 +1,16 @@
+const e = require("cors");
 const Photo = require("../models/Photo");
-
-// um fils zu lesen
-
-const path = require("path");
-const fs = require("fs/promises");
 
 // uploadPhoto
 /** @type {import("express").RequestHandler} */
 exports.uploadPhoto = async (req, res, next) => {
   const photo = await new Photo(req.body);
-  photo.photoFile = req.file.path;
-  // user mitgeben
+  const filename = req.file.path;
+
+  photo.photoFile = filename;
+
   photo.user = req.user._id;
+
   await photo.save();
 
   res.status(200).send(photo);
