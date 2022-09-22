@@ -6,7 +6,9 @@ exports.uploadPhoto = [
   body("title").optional().trim(),
   body("category")
     .notEmpty()
+
     .isIn(["Nature", "Food", "Arts", "Cars", "Fashions", "Animals", "Other"])
+
     .withMessage("you must select : one category"),
 
   body("location").optional().trim(),

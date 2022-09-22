@@ -8,9 +8,20 @@ const validator = require("../lib/validators/photosValidator");
 
 const auth = require("../lib/middlewares/auth");
 const multer = require("multer");
-const upload = multer({ dest: "uploads" });
+
 
 const app = express.Router();
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + ".jpg"); //Appending .jpg
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // -> photos/upload-photo
 
@@ -22,8 +33,13 @@ app.post(
   controller.uploadPhoto
 );
 
-// -> photos/photos
 
-app.get("/", auth, controller.getAllPhotos);
+
+// -> photos/photos/:id
+//app.get("/:id", controller.getPhotoById);
+
+// -> photos
+
+app.get("/", controller.getAllPhotos);
 
 module.exports = app;
