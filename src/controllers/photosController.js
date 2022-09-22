@@ -15,3 +15,9 @@ exports.uploadPhoto = async (req, res, next) => {
 
   res.status(200).send(photo);
 };
+// getAllPhotos
+/** @type {import("express").RequestHandler} */
+exports.getAllPhotos = async (req, res, next) => {
+  const photos = await Photo.find();
+  res.status(200).send(photos);
+};

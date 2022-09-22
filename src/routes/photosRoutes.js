@@ -12,7 +12,7 @@ const upload = multer({ dest: "uploads" });
 
 const app = express.Router();
 
-//
+// -> photos/upload-photo
 
 app.post(
   "/upload-photo",
@@ -21,5 +21,9 @@ app.post(
   validator.uploadPhoto,
   controller.uploadPhoto
 );
+
+// -> photos/photos
+
+app.get("/", auth, controller.getAllPhotos);
 
 module.exports = app;
