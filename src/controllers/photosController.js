@@ -10,7 +10,8 @@ const fs = require("fs/promises");
 exports.uploadPhoto = async (req, res, next) => {
   const photo = await new Photo(req.body);
   photo.photoFile = req.file.path;
-
+  // user mitgeben
+  photo.user = req.user._id;
   await photo.save();
 
   res.status(200).send(photo);
@@ -18,6 +19,6 @@ exports.uploadPhoto = async (req, res, next) => {
 // getAllPhotos
 /** @type {import("express").RequestHandler} */
 exports.getAllPhotos = async (req, res, next) => {
-  const photos = await Photo.find();
+  const photos = await Photo.find().populate("user");
   res.status(200).send(photos);
 };
