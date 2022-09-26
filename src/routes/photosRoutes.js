@@ -9,7 +9,6 @@ const validator = require("../lib/validators/photosValidator");
 const auth = require("../lib/middlewares/auth");
 const multer = require("multer");
 
-
 const app = express.Router();
 
 const storage = multer.diskStorage({
@@ -33,10 +32,8 @@ app.post(
   controller.uploadPhoto
 );
 
-
-
-// -> photos/photos/:id
-//app.get("/:id", controller.getPhotoById);
+//-> photos/:id
+app.get("/:id", controller.getPhotoById);
 
 // -> photos
 
