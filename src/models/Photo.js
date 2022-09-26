@@ -11,7 +11,8 @@ const photoSchema = mongoose.Schema({
   location: String,
   photoFile: { type: String, required: true },
   //comments: [{ type: mongoose.SchemaTypes.ObjectId, ref: "User" }],
-  //likedPhotos: [],
+  likedPhotos: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Photo" }],
+  //isFav: Boolean,
   totalLikes: Number,
 });
 

@@ -1,12 +1,8 @@
-
 const Photo = require("../models/Photo");
-
 
 // um fils zu lesen
 
 const path = require("path");
-
-
 
 // uploadPhoto
 /** @type {import("express").RequestHandler} */
@@ -19,8 +15,6 @@ exports.uploadPhoto = async (req, res, next) => {
 
   photo.user = req.user._id;
 
-
-
   await photo.save();
 
   res.status(200).send(photo);
@@ -28,7 +22,6 @@ exports.uploadPhoto = async (req, res, next) => {
 // getAllPhotos
 /** @type {import("express").RequestHandler} */
 exports.getAllPhotos = async (req, res, next) => {
-
   const photos = await Photo.find().populate("user");
 
   res.status(200).send(photos);
