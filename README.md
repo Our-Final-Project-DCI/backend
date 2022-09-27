@@ -13,11 +13,9 @@
 - **Logout**: Der User kann sich aus seinem Account ausloggen.
 
 - **Foto hochladen**: Der User darf Photo hochladen wenn User einen Account hat und er ist eingeloggt .
-über ein Formdata werden Fotos hochgeladen . um Bilder hochzuladen sind photoFile und category Fielder (required) ..
-Titel , description und location sind nicht required beim Photo-Upload .
-Dieses Foto wird in der Datenbank gespeichert werden.
-
-
+  über ein Formdata werden Fotos hochgeladen . um Bilder hochzuladen sind photoFile und category Fielder (required) ..
+  Titel , description und location sind nicht required beim Photo-Upload .
+  Dieses Foto wird in der Datenbank gespeichert werden.
 
 alle hochgeladene Photos werden in der My Photos Collection in Account- Seite und und auch in der Gallery-Seite unter den ausgewählten Category und kann auch im Home-seite mit random bilder von anderen Users gezeigt werden.
 
@@ -49,7 +47,7 @@ alle hochgeladene Photos werden in der My Photos Collection in Account- Seite un
 - **User**: Manged User-Daten
 - **Foto** : Manged User-foto
 - **Comment**: Manged
-![PHTOTORAM-Model-mockup](https://user-images.githubusercontent.com/81626271/189150270-81efa674-11d4-4212-a21f-de21ea172c36.png)
+  ![PHTOTORAM-Model-mockup](https://user-images.githubusercontent.com/81626271/189150270-81efa674-11d4-4212-a21f-de21ea172c36.png)
 
 ## endpunkte:
 
@@ -123,6 +121,7 @@ Response:
 ermöglicht es user-daten zu updaten. Body wird als FormData definiert (avatar hochladen)
 
 Body:
+
 ```javaScript
 {
   name: "Hey Hello",
@@ -132,6 +131,7 @@ Body:
 ```
 
 Response:
+
 ```javaScript
 
 {
@@ -142,8 +142,7 @@ Response:
 }
 ```
 
-
-### POST /photos
+### POST /photos/ upload-photo
 
 ladet eine neue PHOTO hoch
 

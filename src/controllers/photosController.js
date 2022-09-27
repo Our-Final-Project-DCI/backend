@@ -1,10 +1,14 @@
-const e = require("cors");
 const Photo = require("../models/Photo");
+
+// um fils zu lesen
+
+const path = require("path");
 
 // uploadPhoto
 /** @type {import("express").RequestHandler} */
 exports.uploadPhoto = async (req, res, next) => {
   const photo = await new Photo(req.body);
+
   const filename = req.file.path;
 
   photo.photoFile = filename;
