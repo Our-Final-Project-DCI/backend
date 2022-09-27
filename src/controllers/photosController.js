@@ -30,6 +30,6 @@ exports.uploadPhoto = async (req, res, next) => {
 exports.getAllPhotos = async (req, res, next) => {
 
   const photos = await Photo.find().populate("user");
-
+  console.log(photos.map(p => p.photoFile));
   res.status(200).send(photos);
 };
