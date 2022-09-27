@@ -26,6 +26,7 @@ exports.getAllPhotos = async (req, res, next) => {
 
   res.status(200).send(photos);
 };
+
 // getPhotoById
 /** @type {import("express").RequestHandler} */
 exports.getPhotoById = async (req, res, next) => {
