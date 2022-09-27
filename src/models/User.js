@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   token: String,
-  //likedPhotos: [],
+  likedPhotos: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Photo" }],
   avatar: String,
   gender: { type: String, enum: ["Male", "Female"] },
   city: String,

@@ -15,9 +15,29 @@ exports.uploadPhoto = async (req, res, next) => {
 
   res.status(200).send(photo);
 };
+
 // getAllPhotos
 /** @type {import("express").RequestHandler} */
 exports.getAllPhotos = async (req, res, next) => {
-  const photos = await Photo.find().populate("user");
+  console.log(req.query);
+  const own = req.query.own;
+  const liked = req.query.liked;
+
+  if (liked) {
+    await req.user.populate("likedPhotos");
+    res.status(200).send(req.user.likedPhotos);
+    return;
+  }
+
+  let dbQuery = Photo.find();
+
+  if (own) {
+    dbQuery = dbQuery.where("user").equals(req.user._id);
+  }
+  // Photo.find().where("user").equals(user._id);
+  console.log(own);
+
+  const photos = await dbQuery.populate("user");
+  console.log(photos);
   res.status(200).send(photos);
 };

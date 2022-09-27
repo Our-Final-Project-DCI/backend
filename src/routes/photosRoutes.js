@@ -35,6 +35,9 @@ app.post(
 // -> photos
 app.get("/", controller.getAllPhotos);
 
+// -> /account
+app.get("/account", auth, controller.getAllPhotos);
+
 // -> photos/photos/:id
 //app.get("/:id", controller.getPhotoById);
 module.exports = app;
