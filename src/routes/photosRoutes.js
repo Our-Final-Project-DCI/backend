@@ -35,6 +35,9 @@ app.post(
 //-> photos/:id
 app.get("/:id", controller.getPhotoById);
 
+// -> /account
+app.get("/account", auth, controller.getAllPhotos);
+
 // -> photos
 
 app.get("/", controller.getAllPhotos);
