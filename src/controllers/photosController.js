@@ -1,9 +1,5 @@
 const Photo = require("../models/Photo");
 
-// um fils zu lesen
-
-const path = require("path");
-
 // uploadPhoto
 /** @type {import("express").RequestHandler} */
 exports.uploadPhoto = async (req, res, next) => {
@@ -23,7 +19,7 @@ exports.uploadPhoto = async (req, res, next) => {
 // getAllPhotos
 /** @type {import("express").RequestHandler} */
 exports.getAllPhotos = async (req, res, next) => {
-  console.log(req.query);
+
   const own = req.query.own;
   const liked = req.query.liked;
 
@@ -38,10 +34,8 @@ exports.getAllPhotos = async (req, res, next) => {
   if (own) {
     dbQuery = dbQuery.where("user").equals(req.user._id);
   }
-  // Photo.find().where("user").equals(user._id);
-  console.log(own);
-
+  
   const photos = await dbQuery.populate("user");
-  console.log(photos);
+ 
   res.status(200).send(photos);
 };
