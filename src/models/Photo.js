@@ -4,7 +4,7 @@ const photoSchema = mongoose.Schema({
   user: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: true },
   category: {
     type: String,
-    enum: ["Nature", "Arts", "Cars", "Fashions", "Foods", "Others", "Animals"],
+    enum: ["Nature", "Foods", "Cars", "Arts", "Fashions", "Animals", "Others"],
     required: true,
   },
   title: String,
