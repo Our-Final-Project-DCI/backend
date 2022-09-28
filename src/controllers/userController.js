@@ -61,7 +61,7 @@ exports.login = async (req, res, next) => {
 // 3. update:
 /** @type {import("express").RequestHandler} */
 exports.update = async (req, res, next) => {
-  const { fullname, land, city, description, gender } = req.body;
+  const { fullname, land, city, description, gender, likedPhotos } = req.body;
 
   const user = req.user;
   if (fullname) {
@@ -82,6 +82,10 @@ exports.update = async (req, res, next) => {
 
   if (gender) {
     user.gender = gender;
+  }
+
+  if (likedPhotos) {
+    user.likedPhotos = likedPhotos;
   }
 
   if (req.file) {

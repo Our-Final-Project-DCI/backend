@@ -38,7 +38,7 @@ exports.getAllPhotos = async (req, res, next) => {
 
   res.status(200).send(photos);
 
-  console.log("code");
+
 };
 
 // getPhotoById
