@@ -37,6 +37,8 @@ exports.getAllPhotos = async (req, res, next) => {
   const photos = await dbQuery.populate("user");
 
   res.status(200).send(photos);
+
+  console.log("code");
 };
 
 // getPhotoById

@@ -32,14 +32,16 @@ app.post(
   controller.uploadPhoto
 );
 
-//-> photos/:id
-app.get("/:id", controller.getPhotoById);
-
 // -> /account
 app.get("/account", auth, controller.getAllPhotos);
 
+// app.get("/account", auth, (req, res) => {
+//   res.status(200).send([]);
+//   console.log("code");
+// });
 // -> photos
 
 app.get("/", controller.getAllPhotos);
 
+app.get("/:id", controller.getPhotoById);
 module.exports = app;
