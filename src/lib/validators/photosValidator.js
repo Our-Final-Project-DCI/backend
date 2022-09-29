@@ -7,7 +7,7 @@ exports.uploadPhoto = [
   body("category")
     .notEmpty()
 
-    .isIn(["Nature", "Food", "Arts", "Cars", "Fashions", "Animals", "Other"])
+    .isIn(["Nature", "Foods", "Arts", "Cars", "Fashions", "Animals", "Others"])
 
     .withMessage("you must select : one category"),
 
