@@ -19,6 +19,9 @@ exports.uploadPhoto = async (req, res, next) => {
 // getAllPhotos
 /** @type {import("express").RequestHandler} */
 exports.getAllPhotos = async (req, res, next) => {
+  const category = req.query.category;
+  const search = req.query.search;
+
   const own = req.query.own;
   const liked = req.query.liked;
 
@@ -34,11 +37,20 @@ exports.getAllPhotos = async (req, res, next) => {
     dbQuery = dbQuery.where("user").equals(req.user._id);
   }
 
+  if (category) {
+    dbQuery = dbQuery.where("category").equals(category);
+  }
+
+  if (search) {
+    dbQuery = dbQuery.or([
+      { title: { $regex: search, $options: "i" } },
+      /* {"description": {$regex: search, $options: "i" }} */
+    ]);
+  }
+
   const photos = await dbQuery.populate("user");
 
   res.status(200).send(photos);
-
-
 };
 
 // getPhotoById

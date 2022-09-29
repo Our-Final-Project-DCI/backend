@@ -35,10 +35,6 @@ app.post(
 // -> /account
 app.get("/account", auth, controller.getAllPhotos);
 
-// app.get("/account", auth, (req, res) => {
-//   res.status(200).send([]);
-//   console.log("code");
-// });
 // -> photos
 
 app.get("/", controller.getAllPhotos);
