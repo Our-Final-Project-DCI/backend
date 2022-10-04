@@ -61,7 +61,7 @@ exports.getPhotoById = async (req, res, next) => {
 
   await Promise.all(
     photo.comments.map(async (comment) => {
-      await comment.populate("user", "username avatar"); // 2
+      await comment.populate("user"); // 2
     })
   );
 
@@ -71,5 +71,6 @@ exports.getPhotoById = async (req, res, next) => {
 
     return next(error);
   }
+  console.log(photo);
   res.status(200).send(photo);
 };

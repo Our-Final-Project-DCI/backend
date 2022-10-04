@@ -15,10 +15,10 @@ exports.createComment = async (req, res, next) => {
     return next(error);
   }
 
+  await comment.save();
   photo.comments.push(comment._id);
 
-  await comment.save();
   await photo.save();
-
+  console.log(comment, photo);
   res.status(200).send(comment);
 };

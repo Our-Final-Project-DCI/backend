@@ -1,5 +1,4 @@
 const { body } = require("express-validator");
-// error validator importieren:
 const errorsValidator = require("../middlewares/errorsValidator");
 
 exports.createComment = [

@@ -10,7 +10,7 @@ const photoSchema = mongoose.Schema({
   title: String,
   location: String,
   photoFile: { type: String, required: true },
-  comments: [{ type: mongoose.SchemaTypes.ObjectId, ref: "User" }],
+  comments: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Comment" }],
   totalLikes: Number,
 });
 
