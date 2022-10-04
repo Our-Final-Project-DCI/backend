@@ -61,8 +61,15 @@ exports.login = async (req, res, next) => {
 // 3. update:
 /** @type {import("express").RequestHandler} */
 exports.update = async (req, res, next) => {
-  const { fullname, land, city, description, gender, likedPhotos } = req.body;
-
+  const {
+    fullname,
+    land,
+    city,
+    description,
+    gender,
+    likedPhotos,
+    socialMedias,
+  } = req.body;
   const user = req.user;
   if (fullname) {
     user.fullname = fullname;
@@ -88,6 +95,11 @@ exports.update = async (req, res, next) => {
     user.likedPhotos = likedPhotos;
   }
 
+  if (socialMedias) {
+    user.socialMedias = socialMedias;
+  }
+  console.log(socialMedias);
+  console.log(socialMedias);
   if (req.file) {
     const filename = path.join(process.cwd(), req.file.path);
     const buffer = await fs.readFile(filename);

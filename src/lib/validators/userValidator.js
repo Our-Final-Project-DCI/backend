@@ -34,4 +34,13 @@ exports.update = [
   body("city").optional().trim(),
   body("land").optional().trim(),
   body("description").optional().trim(),
+  body(
+    "socialMedias",
+    "socialMedias must be an array with min single value"
+  ).isArray({ min: 1 }),
+  body("socialMedias.*.platform", "platform must be a string").isLength({
+    min: 1,
+  }),
+  body("socialMedias.*.link", "link must be a string").isLength({ min: 1 }),
+  errorsValidator,
 ];

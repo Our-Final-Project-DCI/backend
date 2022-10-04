@@ -14,8 +14,8 @@ const userSchema = mongoose.Schema({
   description: String,
   // socialMedias: [
   //   {
-  //     platform: String,
-  //     link: String,
+  //     platform: { type: String },
+  //     link: { type: String },
   //   },
   // ],
 });
