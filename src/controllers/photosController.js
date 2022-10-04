@@ -57,7 +57,13 @@ exports.getAllPhotos = async (req, res, next) => {
 /** @type {import("express").RequestHandler} */
 exports.getPhotoById = async (req, res, next) => {
   const id = req.params.id;
-  const photo = await Photo.findById(id).populate("user");
+  const photo = await Photo.findById(id).populate("user").populate("comments");
+
+  await Promise.all(
+    photo.comments.map(async (comment) => {
+      await comment.populate("user"); // 2
+    })
+  );
 
   if (!photo) {
     const error = new Error("This photo-Id is not correct!!");
@@ -65,5 +71,6 @@ exports.getPhotoById = async (req, res, next) => {
 
     return next(error);
   }
+  console.log(photo);
   res.status(200).send(photo);
 };
