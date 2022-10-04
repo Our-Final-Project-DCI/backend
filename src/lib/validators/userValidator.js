@@ -26,7 +26,8 @@ exports.login = [
 ];
 
 exports.update = [
-  body("gender")
+   body("gender")
+    .optional()
     .notEmpty()
     .isIn(["Male", "Female"])
     .withMessage("you must select : female or male"),
@@ -34,13 +35,13 @@ exports.update = [
   body("city").optional().trim(),
   body("land").optional().trim(),
   body("description").optional().trim(),
-  body(
+  /* body(
     "socialMedias",
     "socialMedias must be an array with min single value"
   ).isArray({ min: 1 }),
   body("socialMedias.*.platform", "platform must be a string").isLength({
     min: 1,
   }),
-  body("socialMedias.*.link", "link must be a string").isLength({ min: 1 }),
+  body("socialMedias.*.link", "link must be a string").isLength({ min: 1 }), */
   errorsValidator,
 ];
