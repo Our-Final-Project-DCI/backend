@@ -61,59 +61,42 @@ exports.login = async (req, res, next) => {
 // 3. update:
 /** @type {import("express").RequestHandler} */
 exports.update = async (req, res, next) => {
-  const {
-    fullname,
-    land,
-    city,
-    description,
-    gender,
-    likedPhotos,
-    socialMedias,
-  } = req.body;
+  const { fullname, land, city, description, gender, likedPhotos } = req.body;
+
   const user = req.user;
+
   if (fullname) {
     user.fullname = fullname;
   }
-
   if (land) {
     user.land = land;
   }
-
   if (city) {
     user.city = city;
   }
-
   if (description) {
     user.description = description;
   }
-
   if (gender) {
     user.gender = gender;
   }
-
   if (likedPhotos) {
     user.likedPhotos = likedPhotos;
   }
-
-  if (socialMedias) {
-    user.socialMedias = socialMedias;
-  }
-  console.log(socialMedias);
-  console.log(socialMedias);
+  // if (socialMedias) {
+  //   user.socialMedias = socialMedias;
+  // }
   if (req.file) {
     const filename = path.join(process.cwd(), req.file.path);
     const buffer = await fs.readFile(filename);
     const image = `data:${req.file.mimetype};base64,${buffer.toString(
       "base64"
     )}`;
-
     user.avatar = image;
-
     await fs.unlink(filename);
   }
 
   await user.save();
-
   res.status(200).send(user);
 };
 
@@ -121,13 +104,10 @@ exports.update = async (req, res, next) => {
 /** @type {import("express").RequestHandler} */
 exports.getCurrentUser = async (req, res, next) => {
   const token = req.cookies["user-token"];
-
   if (!token) {
     return res.status(200).json(null);
   }
-
   const user = await User.findOne().where("token").equals(token);
-
   return res.status(200).json(user);
 };
 
@@ -135,8 +115,8 @@ exports.getCurrentUser = async (req, res, next) => {
 /** @type {import("express").RequestHandler} */
 exports.logout = async (req, res, next) => {
   const token = req.cookies["user-token"];
-  const user = await User.findOne().where("token").equals(token);
 
+  const user = await User.findOne().where("token").equals(token);
   if (user) {
     user.token = "";
     await user.save();
@@ -147,6 +127,5 @@ exports.logout = async (req, res, next) => {
     sameSite: "strict",
     httpOnly: true,
   });
-
   res.status(200).send();
 };

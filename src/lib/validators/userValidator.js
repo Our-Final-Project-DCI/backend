@@ -1,5 +1,4 @@
 const { body } = require("express-validator");
-// error validator importieren:
 const errorsValidator = require("../middlewares/errorsValidator");
 
 exports.signup = [
@@ -26,22 +25,13 @@ exports.login = [
 ];
 
 exports.update = [
-   body("gender")
-    .optional()
-    .notEmpty()
+  body("gender")
+    // .notEmpty()
     .isIn(["Male", "Female"])
     .withMessage("you must select : female or male"),
   body("fullname").optional().trim(),
   body("city").optional().trim(),
   body("land").optional().trim(),
   body("description").optional().trim(),
-  /* body(
-    "socialMedias",
-    "socialMedias must be an array with min single value"
-  ).isArray({ min: 1 }),
-  body("socialMedias.*.platform", "platform must be a string").isLength({
-    min: 1,
-  }),
-  body("socialMedias.*.link", "link must be a string").isLength({ min: 1 }), */
   errorsValidator,
 ];

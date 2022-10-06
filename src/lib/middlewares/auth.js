@@ -4,10 +4,7 @@ const errorsValidator = require("./errorsValidator");
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res, next) => {
   const token = req.cookies["user-token"];
-
-  /*  console.log(req.cookies); */
   console.log(token);
-
   if (!token) {
     const error = new Error("you need to signup or login first!!");
     error.status = 401;
@@ -15,7 +12,6 @@ module.exports = async (req, res, next) => {
   }
 
   const user = await User.findOne().where("token").equals(token);
-
   if (!user) {
     const error = new Error("your token is invalid!!");
     error.status = 401;

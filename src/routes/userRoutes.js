@@ -7,10 +7,7 @@ const app = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "uploads" });
 
-// http://localhost:3007
-
-// 1) /user
-
+// -> /user/update
 app.patch(
   "/update",
   auth,
@@ -19,17 +16,16 @@ app.patch(
   controller.update
 );
 
-// getCurrentUser
-
+// -> /user
 app.get("/", controller.getCurrentUser);
 
-// 2)  /user/signup
+// ->  /user/signup
 app.post("/signup", validator.signup, controller.signup);
 
-// 3)  /user/login
+// ->  /user/login
 app.post("/login", validator.login, controller.login);
 
-// 4)  /user/logout
+// ->  /user/logout
 app.post("/logout", controller.logout);
 
 module.exports = app;
