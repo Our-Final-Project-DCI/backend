@@ -26,6 +26,7 @@ exports.login = [
 
 exports.update = [
   body("gender")
+    .optional()
     // .notEmpty()
     .isIn(["Male", "Female"])
     .withMessage("you must select : female or male"),
