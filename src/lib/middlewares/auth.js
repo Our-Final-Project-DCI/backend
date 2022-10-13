@@ -1,10 +1,9 @@
 const User = require("../../models/User");
-const errorsValidator = require("./errorsValidator");
 
 /** @type {import("express").RequestHandler} */
 module.exports = async (req, res, next) => {
   const token = req.cookies["user-token"];
-  console.log(token);
+  // console.log(token);
   if (!token) {
     const error = new Error("you need to signup or login first!!");
     error.status = 401;
