@@ -1,19 +1,17 @@
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
-const crypto = require("crypto");
 
 // um fils zu lesen
-
 const path = require("path");
 const fs = require("fs/promises");
+const security = require("../lib/security");
 
 // 1. signup
 /** @type {import("express").RequestHandler} */
 exports.signup = async (req, res, next) => {
   const newUser = await new User(req.body);
 
-  newUser.password = await bcrypt.hash(newUser.password, 10);
-  newUser.token = crypto.randomBytes(64).toString("hex");
+  newUser.password = await security.encrypt(newUser.password, 10);
+  newUser.token = security.createToken();
 
   await newUser.save();
 
@@ -39,14 +37,14 @@ exports.login = async (req, res, next) => {
     return next(error);
   }
 
-  const correctPws = await bcrypt.compare(password, userFound.password);
+  const correctPws = await security.compare(password, userFound.password);
   if (!correctPws) {
     const error = new Error("This password is not correct!!");
     error.status = 401;
     return next(error);
   }
 
-  userFound.token = crypto.randomBytes(64).toString("hex");
+  userFound.token = security.createToken();
   await userFound.save();
 
   res.cookie("user-token", userFound.token, {
@@ -83,9 +81,7 @@ exports.update = async (req, res, next) => {
   if (likedPhotos) {
     user.likedPhotos = likedPhotos;
   }
-  // if (socialMedias) {
-  //   user.socialMedias = socialMedias;
-  // }
+
   if (req.file) {
     const filename = path.join(process.cwd(), req.file.path);
     const buffer = await fs.readFile(filename);
@@ -100,7 +96,7 @@ exports.update = async (req, res, next) => {
   res.status(200).send(user);
 };
 
-//4. getCurrentUser:
+// 4. getCurrentUser:
 /** @type {import("express").RequestHandler} */
 exports.getCurrentUser = async (req, res, next) => {
   const token = req.cookies["user-token"];
@@ -111,7 +107,7 @@ exports.getCurrentUser = async (req, res, next) => {
   return res.status(200).json(user);
 };
 
-//5. logout:
+// 5. logout:
 /** @type {import("express").RequestHandler} */
 exports.logout = async (req, res, next) => {
   const token = req.cookies["user-token"];
