@@ -34,4 +34,5 @@ app.get("/", controller.getAllPhotos);
 
 //-> photos/:id
 app.get("/:id", controller.getPhotoById);
+
 module.exports = app;

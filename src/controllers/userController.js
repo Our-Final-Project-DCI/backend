@@ -1,9 +1,9 @@
 const User = require("../models/User");
+const security = require("../lib/security");
 
 // um fils zu lesen
 const path = require("path");
 const fs = require("fs/promises");
-const security = require("../lib/security");
 
 // 1. signup
 /** @type {import("express").RequestHandler} */

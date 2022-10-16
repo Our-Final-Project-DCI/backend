@@ -14,12 +14,9 @@ const { DB_URL, DB_PORT, PORT, DB_NAME } = process.env;
 
 mongoose.connect(`mongodb://${DB_URL}:${DB_PORT}/${DB_NAME}`);
 
-// Start express app
 const app = express();
 
-// bodyParser Middleware
 app.use(express.json());
-// cookieParser Middleware
 app.use(cookieParser());
 
 // cors Config:
@@ -36,7 +33,6 @@ app.use(express.static("uploads"));
 
 // ROUTERS
 app.use("/user", userRouter);
-
 app.use("/photos", photosRouter);
 app.use("/comments", commentsRouter);
 

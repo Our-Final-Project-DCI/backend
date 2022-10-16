@@ -12,12 +12,20 @@ const userSchema = mongoose.Schema({
   city: String,
   land: String,
   description: String,
-  // socialMedias: [
-  //   {
-  //     platform: { type: String },
-  //     link: { type: String },
-  //   },
-  // ],
 });
 
+// userSchema.methods.toJSON = function () {
+//   const user = this;
+//   const result = {
+//     username: user.username,
+//     email: user.email,
+//     avatar: user.avatar,
+//     likedPhotos: user.likedPhotos,
+//     description: user.description,
+//     gender: user.gender,
+//     city: user.city,
+//     land: user.land,
+//   };
+//   return result;
+// };
 module.exports = mongoose.model("User", userSchema, "users");
