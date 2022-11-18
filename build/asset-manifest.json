@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9ceacf48.css",
+    "main.js": "/static/js/main.cdaccee0.js",
+    "static/media/uploadFile.png": "/static/media/uploadFile.fb7e108472831780a8ec.png",
+    "static/media/contact1.jpg": "/static/media/contact1.73cf6c73468c19ef47b0.jpg",
+    "static/media/238870.jpg": "/static/media/238870.cb81dd7f2e0ee64936d2.jpg",
+    "static/media/modern_logo.png": "/static/media/modern_logo.079cddbe41652714f15d.png",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/index.html",
+    "main.9ceacf48.css.map": "/static/css/main.9ceacf48.css.map",
+    "main.cdaccee0.js.map": "/static/js/main.cdaccee0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ceacf48.css",
+    "static/js/main.cdaccee0.js"
+  ]
+}
